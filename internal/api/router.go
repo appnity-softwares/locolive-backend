@@ -18,6 +18,12 @@ func (server *Server) setupRouter() {
 	router.Use(server.generalRateLimiter())
 
 	// Public routes with strict rate limiting
+	router.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(200, gin.H{
+			"status":  "ok",
+			"message": "LocoLiv Backend is live!",
+		})
+	})
 	router.POST("/users", server.authRateLimiter(), server.createUser)
 	router.POST("/users/login", server.authRateLimiter(), server.loginUser)
 	router.POST("/auth/google", server.authRateLimiter(), server.googleLogin)

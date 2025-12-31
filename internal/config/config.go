@@ -20,6 +20,7 @@ type Config struct {
 	R2AccessKey          string        `mapstructure:"R2_ACCESS_KEY"`
 	R2SecretKey          string        `mapstructure:"R2_SECRET_KEY"`
 	R2BucketName         string        `mapstructure:"R2_BUCKET_NAME"`
+	ExpoRedirectURL      string        `mapstructure:"EXPO_REDIRECT_URL"`
 }
 
 func LoadConfig(path string) (config Config, err error) {

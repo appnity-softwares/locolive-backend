@@ -152,9 +152,12 @@ func (server *Server) googleLogin(ctx *gin.Context) {
 
 // GoogleCallback handles the redirect from Google and forwards it to Expo Go
 func (server *Server) googleCallback(ctx *gin.Context) {
-	// Expo Go URL (Use the exact URL shown in your terminal when running npm start)
-	// For this session it is: exp://192.168.1.3:8081
-	expoUrl := "exp://192.168.1.3:8081/--/google-auth"
+	// Expo Go URL (Configurable via ENV)
+	expoUrl := server.config.ExpoRedirectURL
+	if expoUrl == "" {
+		// Fallback to a sensible default or log a warning if needed, but better to enforce config
+		expoUrl = "exp://127.0.0.1:8081/--/google-auth"
+	}
 
 	// Forward all query parameters from Google (code, state, etc.)
 	location := fmt.Sprintf("%s?%s", expoUrl, ctx.Request.URL.RawQuery)
