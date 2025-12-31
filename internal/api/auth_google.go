@@ -13,7 +13,8 @@ import (
 )
 
 type googleLoginRequest struct {
-	IDToken string `json:"id_token" binding:"required"`
+	IDToken string `json:"id_token"`
+	Code    string `json:"code"`
 }
 
 type googleUser struct {
@@ -31,10 +32,26 @@ func (server *Server) googleLogin(ctx *gin.Context) {
 		return
 	}
 
-	// 1. Verify Google Token
-	gUser, err := verifyGoogleToken(req.IDToken)
-	if err != nil {
-		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+	// 1. Verify Google Token or Exchange Code
+	var gUser *googleUser
+	var err error
+
+	if req.Code != "" {
+		// Exchange code for token
+		gUser, err = server.exchangeGoogleCode(req.Code)
+		if err != nil {
+			ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+			return
+		}
+	} else if req.IDToken != "" {
+		// Verify existing ID Token
+		gUser, err = verifyGoogleToken(req.IDToken)
+		if err != nil {
+			ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+			return
+		}
+	} else {
+		ctx.JSON(http.StatusBadRequest, errorResponse(fmt.Errorf("either id_token or code is required")))
 		return
 	}
 
@@ -144,6 +161,43 @@ func (server *Server) googleCallback(ctx *gin.Context) {
 
 	// Redirect to Expo Go
 	ctx.Redirect(http.StatusFound, location)
+}
+
+func (server *Server) exchangeGoogleCode(code string) (*googleUser, error) {
+	// Exchange code for token
+	tokenEndpoint := "https://oauth2.googleapis.com/token"
+
+	// Using standard POST form values as Google expects form-urlencoded mostly.
+
+	// Let's use http.PostForm
+	resp, err := http.PostForm(tokenEndpoint,
+		map[string][]string{
+			"code":          {code},
+			"client_id":     {server.config.GoogleClientID},
+			"client_secret": {server.config.GoogleClientSecret},
+			"redirect_uri":  {"postmessage"}, // Try "postmessage" first as it's common for mobile/SPA flows where no direct redirect URI matched
+			"grant_type":    {"authorization_code"},
+		})
+
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		var errorBody map[string]interface{}
+		json.NewDecoder(resp.Body).Decode(&errorBody)
+		return nil, fmt.Errorf("failed to exchange code: %v, body: %v", resp.Status, errorBody)
+	}
+
+	var tokenResp struct {
+		IDToken string `json:"id_token"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&tokenResp); err != nil {
+		return nil, err
+	}
+
+	return verifyGoogleToken(tokenResp.IDToken)
 }
 
 func verifyGoogleToken(token string) (*googleUser, error) {
