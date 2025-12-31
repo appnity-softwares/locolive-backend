@@ -35,7 +35,9 @@ COPY --from=builder /app/server .
 # Viper looks for app.env in the current directory or config paths
 # We will use environment variables in Docker Compose, but copying app.env 
 # as a fallback or template is good practice.
-COPY app.env .
+# Copy app.env.example as app.env so Viper has a file to read
+# Actual values will be overridden by environment variables injected by Render
+COPY app.env.example app.env
 COPY db/migrations ./db/migrations
 COPY start.sh .
 
