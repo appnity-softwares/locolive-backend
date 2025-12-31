@@ -1,0 +1,1 @@
+ALTER TABLE stories ADD COLUMN show_location BOOLEAN NOT NULL DEFAULT true;

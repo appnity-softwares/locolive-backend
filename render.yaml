@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: locolive-backend
+    runtime: docker
+    repo: https://github.com/appnitysoftwares/locolive-backend # PLEASE UPDATE THIS
+    plan: free
+    envVars:
+      - key: DB_SOURCE
+        fromDatabase:
+          name: locolive-db
+          property: connectionString
+      - key: ACCESS_TOKEN_DURATION
+        value: 24h
+      - key: REFRESH_TOKEN_DURATION
+        value: 24h
+      - key: SERVER_ADDRESS
+        value: 0.0.0.0:8080
+databases:
+  - name: locolive-db
+    databaseName: privacy_social
+    user: postgres
+    plan: free

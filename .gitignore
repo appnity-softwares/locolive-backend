@@ -1,0 +1,42 @@
+# Binaries
+server
+main
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+tunnel.log
+server.log
+ngrok.log
+localtunnel.log
+
+# Environment
+.env
+app.env
+# Keep app.env.example if it exists
+!app.env.example
+
+# OS Specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+uploads/*
+!uploads/.gitkeep
+tmp/
+coverage.out

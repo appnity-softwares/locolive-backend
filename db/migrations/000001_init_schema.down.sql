@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS connections;
+DROP TABLE IF EXISTS stories;
+DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS users;
+DROP TYPE IF EXISTS story_availability;
+DROP TYPE IF EXISTS connection_status;
+DROP TYPE IF EXISTS user_role;
+DROP EXTENSION IF EXISTS "uuid-ossp";
+DROP EXTENSION IF EXISTS "postgis";

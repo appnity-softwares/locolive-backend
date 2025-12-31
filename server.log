@@ -1,0 +1,99 @@
+[90m4:11PM[0m [32mINF[0m [1mDatabase connection pool configured successfully[0m
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /users                    --> privacy-social-backend/internal/api.(*Server).createUser-fm (7 handlers)
+[GIN-debug] POST   /users/login              --> privacy-social-backend/internal/api.(*Server).loginUser-fm (7 handlers)
+[GIN-debug] POST   /auth/google              --> privacy-social-backend/internal/api.(*Server).googleLogin-fm (7 handlers)
+[GIN-debug] POST   /auth/forgot-password     --> privacy-social-backend/internal/api.(*Server).forgotPassword-fm (7 handlers)
+[GIN-debug] POST   /auth/reset-password      --> privacy-social-backend/internal/api.(*Server).resetPassword-fm (7 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (6 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (6 handlers)
+[GIN-debug] POST   /upload                   --> privacy-social-backend/internal/api.(*Server).uploadFile-fm (7 handlers)
+[GIN-debug] POST   /location/ping            --> privacy-social-backend/internal/api.(*Server).updateLocation-fm (8 handlers)
+[GIN-debug] GET    /location/heatmap         --> privacy-social-backend/internal/api.(*Server).getHeatmap-fm (7 handlers)
+[GIN-debug] GET    /feed                     --> privacy-social-backend/internal/api.(*Server).getFeed-fm (7 handlers)
+[GIN-debug] POST   /stories                  --> privacy-social-backend/internal/api.(*Server).createStory-fm (8 handlers)
+[GIN-debug] GET    /stories/:id              --> privacy-social-backend/internal/api.(*Server).getStory-fm (7 handlers)
+[GIN-debug] PUT    /stories/:id              --> privacy-social-backend/internal/api.(*Server).updateStory-fm (7 handlers)
+[GIN-debug] DELETE /stories/:id              --> privacy-social-backend/internal/api.(*Server).deleteUserStory-fm (7 handlers)
+[GIN-debug] GET    /stories/map              --> privacy-social-backend/internal/api.(*Server).getStoriesMap-fm (7 handlers)
+[GIN-debug] GET    /stories/connections      --> privacy-social-backend/internal/api.(*Server).getConnectionStories-fm (7 handlers)
+[GIN-debug] POST   /stories/:id/archive      --> privacy-social-backend/internal/api.(*Server).archiveStory-fm (7 handlers)
+[GIN-debug] GET    /stories/archived         --> privacy-social-backend/internal/api.(*Server).getArchivedStories-fm (7 handlers)
+[GIN-debug] DELETE /stories/archived/:id     --> privacy-social-backend/internal/api.(*Server).deleteArchivedStory-fm (7 handlers)
+[GIN-debug] GET    /connections              --> privacy-social-backend/internal/api.(*Server).listConnections-fm (7 handlers)
+[GIN-debug] GET    /connections/suggested    --> privacy-social-backend/internal/api.(*Server).getSuggestedConnections-fm (7 handlers)
+[GIN-debug] GET    /connections/requests     --> privacy-social-backend/internal/api.(*Server).listPendingRequests-fm (7 handlers)
+[GIN-debug] GET    /connections/sent         --> privacy-social-backend/internal/api.(*Server).listSentRequests-fm (7 handlers)
+[GIN-debug] POST   /connections/request      --> privacy-social-backend/internal/api.(*Server).sendConnectionRequest-fm (7 handlers)
+[GIN-debug] POST   /connections/update       --> privacy-social-backend/internal/api.(*Server).updateConnection-fm (7 handlers)
+[GIN-debug] DELETE /connections/:id          --> privacy-social-backend/internal/api.(*Server).deleteConnection-fm (7 handlers)
+[GIN-debug] GET    /notifications            --> privacy-social-backend/internal/api.(*Server).getNotifications-fm (7 handlers)
+[GIN-debug] PUT    /notifications/:id/read   --> privacy-social-backend/internal/api.(*Server).markNotificationRead-fm (7 handlers)
+[GIN-debug] PUT    /notifications/read-all   --> privacy-social-backend/internal/api.(*Server).markAllNotificationsRead-fm (7 handlers)
+[GIN-debug] GET    /notifications/unread-count --> privacy-social-backend/internal/api.(*Server).getUnreadCount-fm (7 handlers)
+[GIN-debug] GET    /conversations            --> privacy-social-backend/internal/api.(*Server).getConversationList-fm (7 handlers)
+[GIN-debug] GET    /messages                 --> privacy-social-backend/internal/api.(*Server).getChatHistory-fm (8 handlers)
+[GIN-debug] POST   /messages                 --> privacy-social-backend/internal/api.(*Server).sendMessage-fm (8 handlers)
+[GIN-debug] GET    /messages/unread-count    --> privacy-social-backend/internal/api.(*Server).getUnreadMessageCount-fm (7 handlers)
+[GIN-debug] PUT    /messages/read/:userId    --> privacy-social-backend/internal/api.(*Server).markConversationRead-fm (7 handlers)
+[GIN-debug] DELETE /messages/:id             --> privacy-social-backend/internal/api.(*Server).deleteMessage-fm (7 handlers)
+[GIN-debug] PUT    /messages/:id             --> privacy-social-backend/internal/api.(*Server).editMessage-fm (7 handlers)
+[GIN-debug] PUT    /messages/:id/save        --> privacy-social-backend/internal/api.(*Server).saveMessage-fm (7 handlers)
+[GIN-debug] DELETE /conversations/:userId    --> privacy-social-backend/internal/api.(*Server).deleteConversation-fm (7 handlers)
+[GIN-debug] POST   /messages/:id/reactions   --> privacy-social-backend/internal/api.(*Server).addReaction-fm (7 handlers)
+[GIN-debug] DELETE /messages/:id/reactions   --> privacy-social-backend/internal/api.(*Server).removeReaction-fm (7 handlers)
+[GIN-debug] GET    /messages/:id/reactions   --> privacy-social-backend/internal/api.(*Server).getMessageReactions-fm (7 handlers)
+[GIN-debug] GET    /ws/chat                  --> privacy-social-backend/internal/api.(*Server).chatWebSocket-fm (7 handlers)
+[GIN-debug] GET    /crossings                --> privacy-social-backend/internal/api.(*Server).getCrossings-fm (7 handlers)
+[GIN-debug] PUT    /profile                  --> privacy-social-backend/internal/api.(*Server).updateProfile-fm (7 handlers)
+[GIN-debug] POST   /reports                  --> privacy-social-backend/internal/api.(*Server).createReport-fm (7 handlers)
+[GIN-debug] POST   /profile/boost            --> privacy-social-backend/internal/api.(*Server).boostProfile-fm (7 handlers)
+[GIN-debug] PUT    /account/email            --> privacy-social-backend/internal/api.(*Server).updateUserEmail-fm (7 handlers)
+[GIN-debug] PUT    /account/password         --> privacy-social-backend/internal/api.(*Server).updateUserPassword-fm (7 handlers)
+[GIN-debug] GET    /privacy                  --> privacy-social-backend/internal/api.(*Server).getPrivacySettings-fm (7 handlers)
+[GIN-debug] PUT    /privacy                  --> privacy-social-backend/internal/api.(*Server).updatePrivacySettings-fm (7 handlers)
+[GIN-debug] POST   /users/block              --> privacy-social-backend/internal/api.(*Server).blockUser-fm (7 handlers)
+[GIN-debug] DELETE /users/block/:id          --> privacy-social-backend/internal/api.(*Server).unblockUser-fm (7 handlers)
+[GIN-debug] GET    /users/blocked            --> privacy-social-backend/internal/api.(*Server).getBlockedUsers-fm (7 handlers)
+[GIN-debug] PUT    /location/ghost-mode      --> privacy-social-backend/internal/api.(*Server).toggleGhostMode-fm (7 handlers)
+[GIN-debug] POST   /location/panic           --> privacy-social-backend/internal/api.(*Server).panicMode-fm (7 handlers)
+[GIN-debug] POST   /stories/:id/view         --> privacy-social-backend/internal/api.(*Server).viewStory-fm (7 handlers)
+[GIN-debug] GET    /stories/:id/viewers      --> privacy-social-backend/internal/api.(*Server).getStoryViewers-fm (7 handlers)
+[GIN-debug] POST   /stories/:id/react        --> privacy-social-backend/internal/api.(*Server).reactToStory-fm (7 handlers)
+[GIN-debug] DELETE /stories/:id/react        --> privacy-social-backend/internal/api.(*Server).deleteStoryReaction-fm (7 handlers)
+[GIN-debug] GET    /stories/:id/reactions    --> privacy-social-backend/internal/api.(*Server).getStoryReactions-fm (7 handlers)
+[GIN-debug] POST   /stories/share            --> privacy-social-backend/internal/api.(*Server).shareStory-fm (7 handlers)
+[GIN-debug] GET    /activity/status          --> privacy-social-backend/internal/api.(*Server).getActivityStatus-fm (7 handlers)
+[GIN-debug] GET    /users/search             --> privacy-social-backend/internal/api.(*Server).searchUsers-fm (7 handlers)
+[GIN-debug] GET    /users/:id                --> privacy-social-backend/internal/api.(*Server).getUserProfile-fm (7 handlers)
+[GIN-debug] GET    /profile/me               --> privacy-social-backend/internal/api.(*Server).getMyProfile-fm (7 handlers)
+[GIN-debug] GET    /profile/visitors         --> privacy-social-backend/internal/api.(*Server).getProfileVisitors-fm (7 handlers)
+[GIN-debug] POST   /groups                   --> privacy-social-backend/internal/api.(*Server).createGroup-fm (7 handlers)
+[GIN-debug] GET    /groups                   --> privacy-social-backend/internal/api.(*Server).getMyGroups-fm (7 handlers)
+[GIN-debug] GET    /groups/:id/messages      --> privacy-social-backend/internal/api.(*Server).getGroupMessages-fm (7 handlers)
+[GIN-debug] GET    /admin/users              --> privacy-social-backend/internal/api.(*Server).listUsers-fm (8 handlers)
+[GIN-debug] POST   /admin/users/ban          --> privacy-social-backend/internal/api.(*Server).banUser-fm (8 handlers)
+[GIN-debug] DELETE /admin/users/:id          --> privacy-social-backend/internal/api.(*Server).deleteUser-fm (8 handlers)
+[GIN-debug] GET    /admin/stats              --> privacy-social-backend/internal/api.(*Server).getStats-fm (8 handlers)
+[GIN-debug] GET    /admin/reports            --> privacy-social-backend/internal/api.(*Server).listReports-fm (8 handlers)
+[GIN-debug] PUT    /admin/reports/:id/resolve --> privacy-social-backend/internal/api.(*Server).resolveReport-fm (8 handlers)
+[GIN-debug] GET    /admin/stories            --> privacy-social-backend/internal/api.(*Server).listAllStories-fm (8 handlers)
+[GIN-debug] DELETE /admin/stories/:id        --> privacy-social-backend/internal/api.(*Server).deleteStory-fm (8 handlers)
+[90m4:11PM[0m [32mINF[0m [1mServer started on 0.0.0.0:8080[0m
+Starting HTTP server on 0.0.0.0:8080
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:8080
+[90m4:21PM[0m [32mINF[0m [1mRunning cleanup worker...[0m
+[90m4:21PM[0m [32mINF[0m [1mExpired locations deleted[0m
+[90m4:21PM[0m [32mINF[0m [1mExpired stories deleted[0m
+[90m4:21PM[0m [32mINF[0m [1mOld messages deleted[0m
+[90m4:21PM[0m [32mINF[0m [1mExpired messages deleted[0m
+[90m4:21PM[0m [32mINF[0m [1mOld notifications deleted[0m
+[90m4:21PM[0m [32mINF[0m [1mShutting down gracefully...[0m
+[90m4:21PM[0m [32mINF[0m [1mServer stopped[0m

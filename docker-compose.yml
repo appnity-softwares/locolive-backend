@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: locolive-api
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_DRIVER=postgres
+      - DB_SOURCE=postgresql://postgres:password@postgres:5432/privacy_social?sslmode=disable
+      - SERVER_ADDRESS=0.0.0.0:8080
+      - REDIS_ADDRESS=redis:6379
+      - JWT_SECRET=super-secret-key-change-in-production
+    networks:
+      - locolive-net
+    restart: on-failure
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: locolive-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=privacy_social
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - locolive-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: locolive-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - locolive-net
+
+networks:
+  locolive-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
